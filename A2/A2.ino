@@ -92,14 +92,12 @@ void SetBacklightLEDs(bool state) {
 
 void ShiftLEDs(byte data, bool isFirst) {
   if (isFirst) {
-    digitalWrite(led_CLK_1, LOW);
-//    digitalWrite(led_OE_1, HIGH);
+    digitalWrite(led_OE_1, HIGH);
     digitalWrite(led_LE_1, HIGH);
     shiftOut(led_S_1, led_CLK_1, LSBFIRST, data);
     digitalWrite(led_LE_1, LOW);
-//    digitalWrite(led_OE_1, LOW);
+    digitalWrite(led_OE_1, LOW);
   } else {
-    digitalWrite(led_CLK_2, LOW);
     digitalWrite(led_OE_2, HIGH);
     digitalWrite(led_LE_2, HIGH);
     shiftOut(led_S_2, led_CLK_2, LSBFIRST, data);
@@ -118,7 +116,4 @@ void pinSetup() {
   pinMode(led_CLK_2, OUTPUT);
   pinMode(led_LE_2, OUTPUT);
   pinMode(led_OE_2, OUTPUT);
-
-  digitalWrite(led_OE_1, LOW);
-  digitalWrite(led_OE_2, LOW);
 }
